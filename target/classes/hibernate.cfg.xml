@@ -14,7 +14,11 @@
 <property name="hibernate.current_session_context_class">thread</property>
 <!-- Drop and re-create the database schema on startup -->
 <property name="hbm2ddl.auto">create</property>
+
 <mapping class="com.ams.db.dto.Article" />
+<mapping class="com.ams.db.dto.ArticleCategory" />
+<mapping class="com.ams.db.dto.Category" />
+<mapping class="com.ams.db.dto.GeneralPerson" />
 
 </session-factory>
 </hibernate-configuration>

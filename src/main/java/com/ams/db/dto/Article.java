@@ -76,12 +76,12 @@ public class Article {
 	private String blogURLText;
 	@Column(name = "MEDIA_PLAYER_URL_TXT")
 	private String mediaPlayterURLText;
-	
+
 	@ManyToOne
-	@JoinColumn(name="AUTH_GENN_PID")
+	@JoinColumn(name = "AUTH_GENN_PID")
 	private GeneralPerson generalPerson;
-	
-	 @OneToMany(mappedBy = "article")
+
+	@OneToMany(mappedBy = "article")
 	private Set<ArticleCategory> articleCategorys = new HashSet<ArticleCategory>();
 
 	public int getArtclID() {
@@ -315,6 +315,5 @@ public class Article {
 	public void setArticleCategorys(Set<ArticleCategory> articleCategorys) {
 		this.articleCategorys = articleCategorys;
 	}
-	
 
 }
