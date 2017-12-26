@@ -1,13 +1,18 @@
 package com.ams.db.dto;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,49 +23,49 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ARTCL_ID")
 	private int artclID;
-	@Column(name = "HDLN_TXT")
+	@Column(name = "HDLN_TXT", nullable = false)
 	private String headLine;
-	@Column(name = "BRF_TXT")
+	@Column(name = "BRF_TXT", nullable = true)
 	private String brief;
-	@Column(name = "PUBLS_DT")
+	@Column(name = "PUBLS_DT", nullable = true)
 	private Date publishingDate;
-	@Column(name = "ARCHV_DT")
+	@Column(name = "ARCHV_DT", nullable = true)
 	private Date archivingDate;
-	@Column(name = "PUBLS_IND")
+	@Column(name = "PUBLS_IND", nullable = false)
 	private char publishingInd;
-	@Column(name = "DEL_DT")
+	@Column(name = "DEL_DT", nullable = true)
 	private Date deleteDate;
-	@Column(name = "DEL_APRVD_IND")
+	@Column(name = "DEL_APRVD_IND", nullable = true)
 	private char delAprvdInd;
-	@Column(name = "PODCAST_IND")
+	@Column(name = "PODCAST_IND", nullable = false)
 	private char podcastInd;
-	@Column(name = "BLOGS_IND")
+	@Column(name = "BLOGS_IND", nullable = false)
 	private char blogsInd;
-	@Column(name = "MEDIA_PLAYER_IND")
+	@Column(name = "MEDIA_PLAYER_IND", nullable = false)
 	private char mediaPlayerInd;
-	@Column(name = "CMNT_TXT")
+	@Column(name = "CMNT_TXT", nullable = true)
 	private String comment;
-	@Column(name = "NUM_HITS")
+	@Column(name = "NUM_HITS", nullable = false)
 	private int numOfHits;
-	@Column(name = "SHRT_HDLN_TXT")
+	@Column(name = "SHRT_HDLN_TXT", nullable = false)
 	private String shortHeadline;
-	@Column(name = "KYWRDS_TXT")
+	@Column(name = "KYWRDS_TXT", nullable = true)
 	private String keywords;
-	@Column(name = "DSCUSN_IND")
+	@Column(name = "DSCUSN_IND", nullable = false)
 	private char discussionInd;
 	@Column(name = "DSCUSN_URL_TXT")
 	private String descussionUrlTxt;
-	@Column(name = "Row_Add_Tms")
+	@Column(name = "Row_Add_Tms", nullable = false)
 	private Date rowAddTime;
-	@Column(name = "Row_Add_Uid_No")
+	@Column(name = "Row_Add_Uid_No", nullable = false)
 	private String rowAddUidNo;
-	@Column(name = "Row_Add_Pgm_No")
+	@Column(name = "Row_Add_Pgm_No", nullable = false)
 	private String rowAddProgNo;
-	@Column(name = "Row_Updt_Tms")
+	@Column(name = "Row_Updt_Tms", nullable = false)
 	private Date rowUpdateTime;
-	@Column(name = "Row_Updt_Uid_No")
+	@Column(name = "Row_Updt_Uid_No", nullable = false)
 	private String rowUpdateUserIdNo;
-	@Column(name = "Row_Updt_Pgm_No")
+	@Column(name = "Row_Updt_Pgm_No", nullable = false)
 	private String rowUpdateProgrammNo;
 	@Lob
 	@Column(name = "STORY_DOC")
@@ -71,6 +76,13 @@ public class Article {
 	private String blogURLText;
 	@Column(name = "MEDIA_PLAYER_URL_TXT")
 	private String mediaPlayterURLText;
+	
+	@ManyToOne
+	@JoinColumn(name="AUTH_GENN_PID")
+	private GeneralPerson generalPerson;
+	
+	 @OneToMany(mappedBy = "article")
+	private Set<ArticleCategory> articleCategorys = new HashSet<ArticleCategory>();
 
 	public int getArtclID() {
 		return artclID;
@@ -287,5 +299,22 @@ public class Article {
 	public void setMediaPlayterURLText(String mediaPlayterURLText) {
 		this.mediaPlayterURLText = mediaPlayterURLText;
 	}
+
+	public GeneralPerson getGeneralPerson() {
+		return generalPerson;
+	}
+
+	public void setGeneralPerson(GeneralPerson generalPerson) {
+		this.generalPerson = generalPerson;
+	}
+
+	public Set<ArticleCategory> getArticleCategorys() {
+		return articleCategorys;
+	}
+
+	public void setArticleCategorys(Set<ArticleCategory> articleCategorys) {
+		this.articleCategorys = articleCategorys;
+	}
+	
 
 }
