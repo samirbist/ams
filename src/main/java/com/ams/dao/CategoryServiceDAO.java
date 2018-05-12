@@ -1,31 +1,13 @@
 package com.ams.dao;
 
-import com.ams.dto.CategoryDto;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class CategoryServiceDAO implements CategoryService{
+import com.ams.db.entity.Article;
+import com.ams.db.entity.Category;
+import com.ams.db.entity.User;
+import com.ams.dto.CategoryDTO;
 
-	@Override
-	public CategoryDto getCategory(long userId, long categoryId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public interface CategoryServiceDAO  extends JpaRepository<Category, Long>{
 
-	@Override
-	public long addCategory(long userId, CategoryDto category) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void updateCategory(long categoryId, CategoryDto category) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteCategory(long categoryId) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

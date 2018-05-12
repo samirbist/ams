@@ -60,7 +60,7 @@ public class Article {
 
 	@ManyToOne
 	@JoinColumn(name = "AUTH_GENN_PID")
-	private GeneralPerson generalPerson;
+	private User generalPerson;
 
 	@OneToMany(mappedBy = "article")
 	private Set<ArticleCategory> articleCategorys = new HashSet<ArticleCategory>();
@@ -212,11 +212,11 @@ public class Article {
 	}
 
 	
-	public GeneralPerson getGeneralPerson() {
+	public User getGeneralPerson() {
 		return generalPerson;
 	}
 
-	public void setGeneralPerson(GeneralPerson generalPerson) {
+	public void setGeneralPerson(User generalPerson) {
 		this.generalPerson = generalPerson;
 	}
 

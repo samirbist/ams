@@ -3,7 +3,7 @@ package com.ams.dto;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class UserDto {
+public class UserDTO {
 	
 	
 	private long id;
@@ -14,7 +14,7 @@ public class UserDto {
 	private String email;
 	private String companyName;
 	private String commentTXT;
-	private Collection<ArticleDto> article = new ArrayList<ArticleDto>();
+	private Collection<ArticleDTO> article = new ArrayList<ArticleDTO>();
 	public long getId() {
 		return id;
 	}
@@ -63,11 +63,17 @@ public class UserDto {
 	public void setCommentTXT(String commentTXT) {
 		this.commentTXT = commentTXT;
 	}
-	public Collection<ArticleDto> getArticle() {
+	public Collection<ArticleDTO> getArticle() {
 		return article;
 	}
-	public void setArticle(Collection<ArticleDto> article) {
+	public void setArticle(Collection<ArticleDTO> article) {
 		this.article = article;
+	}
+	@Override
+	public String toString() {
+		return "UserDto [id=" + id + ", pin=" + pin + ", givenName=" + givenName + ", familyName=" + familyName
+				+ ", middleName=" + middleName + ", email=" + email + ", companyName=" + companyName + ", commentTXT="
+				+ commentTXT + ", article=" + article + "]";
 	}
 
 	

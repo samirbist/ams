@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ArticleDto {
+public class ArticleDTO {
 	
 	
 	private long artclID;
@@ -13,9 +13,9 @@ public class ArticleDto {
 	private Date publishingDate;
 	private String shortHeadline;
 	private String keywords;
-	private UserDto user;
+	private UserDTO user;
 
-	private Set<CategoryDto> articleCategorys = new HashSet<CategoryDto>();
+	private Set<CategoryDTO> articleCategorys = new HashSet<CategoryDTO>();
 
 	public long getArtclID() {
 		return artclID;
@@ -65,20 +65,27 @@ public class ArticleDto {
 		this.keywords = keywords;
 	}
 
-	public UserDto getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 
-	public void setUser(UserDto user) {
+	public void setUser(UserDTO user) {
 		this.user = user;
 	}
 
-	public Set<CategoryDto> getArticleCategorys() {
+	public Set<CategoryDTO> getArticleCategorys() {
 		return articleCategorys;
 	}
 
-	public void setArticleCategorys(Set<CategoryDto> articleCategorys) {
+	public void setArticleCategorys(Set<CategoryDTO> articleCategorys) {
 		this.articleCategorys = articleCategorys;
+	}
+
+	@Override
+	public String toString() {
+		return "ArticleDto [artclID=" + artclID + ", headLine=" + headLine + ", brief=" + brief + ", publishingDate="
+				+ publishingDate + ", shortHeadline=" + shortHeadline + ", keywords=" + keywords + ", user=" + user
+				+ ", articleCategorys=" + articleCategorys + "]";
 	}
 	
 	

@@ -1,31 +1,12 @@
 package com.ams.dao;
 
-import com.ams.dto.UserDto;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class UserServiceDAO implements UserService{
+import com.ams.db.entity.User;
+import com.ams.dto.UserDTO;
 
-	@Override
-	public UserDto getUser(long userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public interface UserServiceDAO  extends JpaRepository<User, Long>{
 
-	@Override
-	public long addUser(UserDto user) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void updateUser(long userId, UserDto user) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteUser(long userId) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

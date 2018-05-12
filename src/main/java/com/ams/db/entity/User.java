@@ -3,24 +3,37 @@ package com.ams.db.entity;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "GENN_PERSN")
-public class GeneralPerson {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "GENN_PID")
+	@Column(name = "ID")
 	private long gennPID;
-	@Column(name = "PIN", nullable=false)
+	
+	@Column(name = "LOGIN_NM", nullable=false)
+	private String loginName;
+	
+	@Column(name = "PASSWORD", nullable=false)
+	private String password;
+	
+	@Column(name = "PIN")
 	private String pin;
 	@Column(name = "GIVEN_NM")
 	private String givenName;
@@ -50,6 +63,20 @@ public class GeneralPerson {
 	private String rowUpdtPgmNo;
 	@OneToMany(mappedBy="generalPerson")
 	private Collection<Article> article = new ArrayList<Article>();
+
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 
 	public long getGennPID() {
 		return gennPID;
@@ -183,6 +210,22 @@ public class GeneralPerson {
 
 	public void setArticle(Collection<Article> article) {
 		this.article = article;
+	}
+
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

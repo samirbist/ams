@@ -4,26 +4,28 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CategoryDto {
+public class CategoryDTO {
 	
-	private long CATG_ID;
+	private long categoryId;
 	private String categoryNumber;
 	private Date publishingDate;
-	private CategoryDto parentCategory;
+	private CategoryDTO parentCategory;
 	private String descriptionTXT;
 	
 	private String cagtShrtNM;
 
-	private Set<ArticleDto> articleCategorys = new HashSet<ArticleDto>();
+	private Set<ArticleDTO> articleCategorys = new HashSet<ArticleDTO>();
 
-	public long getCATG_ID() {
-		return CATG_ID;
+
+	
+	public long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCATG_ID(long cATG_ID) {
-		CATG_ID = cATG_ID;
+	public void setCategoryId(long categoryId) {
+		this.categoryId = categoryId;
 	}
-
+	
 	public String getCategoryNumber() {
 		return categoryNumber;
 	}
@@ -40,11 +42,11 @@ public class CategoryDto {
 		this.publishingDate = publishingDate;
 	}
 
-	public CategoryDto getParentCategory() {
+	public CategoryDTO getParentCategory() {
 		return parentCategory;
 	}
 
-	public void setParentCategory(CategoryDto parentCategory) {
+	public void setParentCategory(CategoryDTO parentCategory) {
 		this.parentCategory = parentCategory;
 	}
 
@@ -64,12 +66,19 @@ public class CategoryDto {
 		this.cagtShrtNM = cagtShrtNM;
 	}
 
-	public Set<ArticleDto> getArticleCategorys() {
+	public Set<ArticleDTO> getArticleCategorys() {
 		return articleCategorys;
 	}
 
-	public void setArticleCategorys(Set<ArticleDto> articleCategorys) {
+	public void setArticleCategorys(Set<ArticleDTO> articleCategorys) {
 		this.articleCategorys = articleCategorys;
+	}
+
+	@Override
+	public String toString() {
+		return "CategoryDto [categoryId=" + categoryId + ", categoryNumber=" + categoryNumber + ", publishingDate="
+				+ publishingDate + ", parentCategory=" + parentCategory + ", descriptionTXT=" + descriptionTXT
+				+ ", cagtShrtNM=" + cagtShrtNM + ", articleCategorys=" + articleCategorys + "]";
 	}
 	
 	
