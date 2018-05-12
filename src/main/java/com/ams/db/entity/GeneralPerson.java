@@ -1,9 +1,8 @@
-package com.ams.db.dto;
+package com.ams.db.entity;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,9 +19,7 @@ public class GeneralPerson {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "GENN_PID")
-	private int gennPID;
-	@Column(name = "WW_ID")
-	private String wwID;
+	private long gennPID;
 	@Column(name = "PIN", nullable=false)
 	private String pin;
 	@Column(name = "GIVEN_NM")
@@ -35,8 +32,6 @@ public class GeneralPerson {
 	private String email;
 	@Column(name = "CO_NM")
 	private String companyName;
-	@Column(name = "Cntry_Cd")
-	private String countryCode;
 	@Column(name = "APRVD_IND", nullable = false)
 	private char approvedIND;
 	@Column(name = "CMNT_TXT")
@@ -53,30 +48,18 @@ public class GeneralPerson {
 	private String rowUpdtUidNo;
 	@Column(name = "Row_Updt_Pgm_No", nullable= false)
 	private String rowUpdtPgmNo;
-	@Column(name = "PRTY_EMAIL_IND", nullable =false)
-	private char prtyEmailIND;
-	@Column(name = "SGMT_ID")
-	private String segmentID;
-	@Column(name = "GCP_IND")
-	private char gcpIND;
 	@OneToMany(mappedBy="generalPerson")
 	private Collection<Article> article = new ArrayList<Article>();
 
-	public int getGennPID() {
+	public long getGennPID() {
 		return gennPID;
 	}
 
-	public void setGennPID(int gennPID) {
+	public void setGennPID(long gennPID) {
 		this.gennPID = gennPID;
 	}
 
-	public String getWwID() {
-		return wwID;
-	}
-
-	public void setWwID(String wwID) {
-		this.wwID = wwID;
-	}
+	
 
 	public String getPin() {
 		return pin;
@@ -126,13 +109,7 @@ public class GeneralPerson {
 		this.companyName = companyName;
 	}
 
-	public String getCountryCode() {
-		return countryCode;
-	}
 
-	public void setCountryCode(String countryCode) {
-		this.countryCode = countryCode;
-	}
 
 	public char getApprovedIND() {
 		return approvedIND;
@@ -198,26 +175,8 @@ public class GeneralPerson {
 		this.rowUpdtPgmNo = rowUpdtPgmNo;
 	}
 
-	public char getPrtyEmailIND() {
-		return prtyEmailIND;
-	}
-
-	public void setPrtyEmailIND(char prtyEmailIND) {
-		this.prtyEmailIND = prtyEmailIND;
-	}
-
-	public String getSegmentID() {
-		return segmentID;
-	}
-
-	public void setSegmentID(String segmentID) {
-		this.segmentID = segmentID;
-	}
-
-	public char getGcpIND() {
-		return gcpIND;
-	}
-
+	
+	
 	public Collection<Article> getArticle() {
 		return article;
 	}
@@ -226,8 +185,5 @@ public class GeneralPerson {
 		this.article = article;
 	}
 
-	public void setGcpIND(char gcpIND) {
-		this.gcpIND = gcpIND;
-	}
 
 }

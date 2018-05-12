@@ -1,4 +1,4 @@
-package com.ams.db.dto;
+package com.ams.db.entity;
 
 import java.sql.Date;
 

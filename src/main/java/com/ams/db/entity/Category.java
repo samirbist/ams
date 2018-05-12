@@ -1,4 +1,4 @@
-package com.ams.db.dto;
+package com.ams.db.entity;
 
 import java.sql.Date;
 import java.util.HashSet;
@@ -19,27 +19,20 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CATG_ID")
-	private int CATG_ID;
-	@Column(name = "SGMT_ID")
-	private int sgmtID;
+	private long CATG_ID;
 	@Column(name = "CATG_NM")
 	private String categoryNumber;
-	@Column(name = "CATG_TYP_CD")
-	private String categoryTypeCD;
 	@Column(name = "PUBLS_DT")
 	private Date publishingDate;
 	@Column(name = "ARCHV_DT")
 	private Date archivingDate;
 	@Column(name = "PUBLS_IND")
 	private char publishingIND;
-	@Column(name = "ARTCL_RETNN_VAL")
-	private int articleRetnnVAL;
 	@Column(name = "PARNT_CATG_ID")
 	private String parentCategoryID;
 	@Column(name = "DESCN_TXT")
 	private String descriptionTXT;
-	@Column(name = "ORD_NO")
-	private int orderNO;
+	
 	@Column(name = "Row_Add_Tms")
 	private Date rowAddTms;
 	@Column(name = "Row_Add_Uid_No")
@@ -52,32 +45,22 @@ public class Category {
 	private String rowUpdtUidNo;
 	@Column(name = "Row_Updt_Pgm_No")
 	private String rowUpdtPgmNo;
-	@Column(name = "DEF_ARTCL_ARCHV_DT")
-	private Date defArtclArchvDT;
-	@Column(name = "DEF_ARCHV_DEL_DT")
-	private Date defArchvDelDT;
+	
 	@Column(name = "CAGT_SHRT_NM")
 	private String cagtShrtNM;
 
 	@OneToMany(mappedBy = "category")
 	private Set<ArticleCategory> articleCategorys = new HashSet<ArticleCategory>();
 
-	public int getCATG_ID() {
+	public long getCATG_ID() {
 		return CATG_ID;
 	}
 
-	public void setCATG_ID(int cATG_ID) {
+	public void setCATG_ID(long cATG_ID) {
 		CATG_ID = cATG_ID;
 	}
 
-	public int getSgmtID() {
-		return sgmtID;
-	}
-
-	public void setSgmtID(int sgmtID) {
-		this.sgmtID = sgmtID;
-	}
-
+	
 	public String getCategoryNumber() {
 		return categoryNumber;
 	}
@@ -86,13 +69,6 @@ public class Category {
 		this.categoryNumber = categoryNumber;
 	}
 
-	public String getCategoryTypeCD() {
-		return categoryTypeCD;
-	}
-
-	public void setCategoryTypeCD(String categoryTypeCD) {
-		this.categoryTypeCD = categoryTypeCD;
-	}
 
 	public Date getPublishingDate() {
 		return publishingDate;
@@ -118,14 +94,7 @@ public class Category {
 		this.publishingIND = publishingIND;
 	}
 
-	public int getArticleRetnnVAL() {
-		return articleRetnnVAL;
-	}
-
-	public void setArticleRetnnVAL(int articleRetnnVAL) {
-		this.articleRetnnVAL = articleRetnnVAL;
-	}
-
+	
 	public String getParentCategoryID() {
 		return parentCategoryID;
 	}
@@ -142,13 +111,6 @@ public class Category {
 		this.descriptionTXT = descriptionTXT;
 	}
 
-	public int getOrderNO() {
-		return orderNO;
-	}
-
-	public void setOrderNO(int orderNO) {
-		this.orderNO = orderNO;
-	}
 
 	public Date getRowAddTms() {
 		return rowAddTms;
@@ -198,21 +160,7 @@ public class Category {
 		this.rowUpdtPgmNo = rowUpdtPgmNo;
 	}
 
-	public Date getDefArtclArchvDT() {
-		return defArtclArchvDT;
-	}
-
-	public void setDefArtclArchvDT(Date defArtclArchvDT) {
-		this.defArtclArchvDT = defArtclArchvDT;
-	}
-
-	public Date getDefArchvDelDT() {
-		return defArchvDelDT;
-	}
-
-	public void setDefArchvDelDT(Date defArchvDelDT) {
-		this.defArchvDelDT = defArchvDelDT;
-	}
+	
 
 	public String getCagtShrtNM() {
 		return cagtShrtNM;
