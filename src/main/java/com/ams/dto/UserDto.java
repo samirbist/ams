@@ -2,6 +2,7 @@ package com.ams.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 public class UserDTO {
 	
@@ -14,7 +15,29 @@ public class UserDTO {
 	private String email;
 	private String companyName;
 	private String commentTXT;
-	private Collection<ArticleDTO> article = new ArrayList<ArticleDTO>();
+	private String loginName;
+	private String password;
+	private Set<String> roles;
+	
+	
+	public Set<String> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<String> roles) {
+		this.roles = roles;
+	}
+	public String getLoginName() {
+		return loginName;
+	}
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public long getId() {
 		return id;
 	}
@@ -63,17 +86,12 @@ public class UserDTO {
 	public void setCommentTXT(String commentTXT) {
 		this.commentTXT = commentTXT;
 	}
-	public Collection<ArticleDTO> getArticle() {
-		return article;
-	}
-	public void setArticle(Collection<ArticleDTO> article) {
-		this.article = article;
-	}
+	
 	@Override
 	public String toString() {
 		return "UserDto [id=" + id + ", pin=" + pin + ", givenName=" + givenName + ", familyName=" + familyName
 				+ ", middleName=" + middleName + ", email=" + email + ", companyName=" + companyName + ", commentTXT="
-				+ commentTXT + ", article=" + article + "]";
+				+ commentTXT+"]";
 	}
 
 	

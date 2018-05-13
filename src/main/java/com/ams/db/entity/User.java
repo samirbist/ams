@@ -1,6 +1,5 @@
 package com.ams.db.entity;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -17,7 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "GENN_PERSN")
 public class User {
@@ -26,13 +24,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private long gennPID;
-	
-	@Column(name = "LOGIN_NM", nullable=false)
+
+	@Column(name = "LOGIN_NM", nullable = false)
 	private String loginName;
-	
-	@Column(name = "PASSWORD", nullable=false)
+
+	@Column(name = "PASSWORD", nullable = false)
 	private String password;
-	
+
 	@Column(name = "PIN")
 	private String pin;
 	@Column(name = "GIVEN_NM")
@@ -49,27 +47,32 @@ public class User {
 	private char approvedIND;
 	@Column(name = "CMNT_TXT")
 	private String commentTXT;
-	@Column(name = "Row_Add_Tms", nullable = false)
-	private Date rowAddTime;
-	@Column(name = "Row_Add_Uid_No", nullable = false)
-	private String rowAddUidNo;
-	@Column(name = "Row_Add_Pgm_No", nullable = false)
-	private String rowAddProgramNo;
-	@Column(name = "Row_Updt_Tms", nullable = false)
-	private Date rowUpdateTime;
-	@Column(name = "Row_Updt_Uid_No", nullable =false)
-	private String rowUpdtUidNo;
-	@Column(name = "Row_Updt_Pgm_No", nullable= false)
-	private String rowUpdtPgmNo;
-	@OneToMany(mappedBy="generalPerson")
+	
+	@OneToMany(mappedBy = "generalPerson")
 	private Collection<Article> article = new ArrayList<Article>();
 
-	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
-	
+	public User() {
+		
+	}
+
+	public User(String loginName, String password, String pin, String givenName, String familyName, String middleName,
+			String email, String companyName, String commentTXT, Set<Role> roles) {
+		this.loginName = loginName;
+		this.password = password;
+		this.pin = pin;
+		this.givenName = givenName;
+		this.familyName = familyName;
+		this.middleName = middleName;
+		this.email = email;
+		this.companyName = companyName;
+		this.commentTXT = commentTXT;
+		this.roles = roles;
+	}
+
 	public Set<Role> getRoles() {
 		return roles;
 	}
@@ -85,8 +88,6 @@ public class User {
 	public void setGennPID(long gennPID) {
 		this.gennPID = gennPID;
 	}
-
-	
 
 	public String getPin() {
 		return pin;
@@ -136,8 +137,6 @@ public class User {
 		this.companyName = companyName;
 	}
 
-
-
 	public char getApprovedIND() {
 		return approvedIND;
 	}
@@ -154,55 +153,6 @@ public class User {
 		this.commentTXT = commentTXT;
 	}
 
-	public Date getRowAddTime() {
-		return rowAddTime;
-	}
-
-	public void setRowAddTime(Date rowAddTime) {
-		this.rowAddTime = rowAddTime;
-	}
-
-	public String getRowAddUidNo() {
-		return rowAddUidNo;
-	}
-
-	public void setRowAddUidNo(String rowAddUidNo) {
-		this.rowAddUidNo = rowAddUidNo;
-	}
-
-	public String getRowAddProgramNo() {
-		return rowAddProgramNo;
-	}
-
-	public void setRowAddProgramNo(String rowAddProgramNo) {
-		this.rowAddProgramNo = rowAddProgramNo;
-	}
-
-	public Date getRowUpdateTime() {
-		return rowUpdateTime;
-	}
-
-	public void setRowUpdateTime(Date rowUpdateTime) {
-		this.rowUpdateTime = rowUpdateTime;
-	}
-
-	public String getRowUpdtUidNo() {
-		return rowUpdtUidNo;
-	}
-
-	public void setRowUpdtUidNo(String rowUpdtUidNo) {
-		this.rowUpdtUidNo = rowUpdtUidNo;
-	}
-
-	public String getRowUpdtPgmNo() {
-		return rowUpdtPgmNo;
-	}
-
-	public void setRowUpdtPgmNo(String rowUpdtPgmNo) {
-		this.rowUpdtPgmNo = rowUpdtPgmNo;
-	}
-
-	
 	
 	public Collection<Article> getArticle() {
 		return article;
@@ -227,6 +177,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 }

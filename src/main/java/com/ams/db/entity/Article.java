@@ -45,18 +45,7 @@ public class Article {
 	private String shortHeadline;
 	@Column(name = "KYWRDS_TXT", nullable = true)
 	private String keywords;
-	@Column(name = "Row_Add_Tms", nullable = false)
-	private Date rowAddTime;
-	@Column(name = "Row_Add_Uid_No", nullable = false)
-	private String rowAddUidNo;
-	@Column(name = "Row_Add_Pgm_No", nullable = false)
-	private String rowAddProgNo;
-	@Column(name = "Row_Updt_Tms", nullable = false)
-	private Date rowUpdateTime;
-	@Column(name = "Row_Updt_Uid_No", nullable = false)
-	private String rowUpdateUserIdNo;
-	@Column(name = "Row_Updt_Pgm_No", nullable = false)
-	private String rowUpdateProgrammNo;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "AUTH_GENN_PID")
@@ -160,55 +149,6 @@ public class Article {
 
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
-	}
-
-
-	public Date getRowAddTime() {
-		return rowAddTime;
-	}
-
-	public void setRowAddTime(Date rowAddTime) {
-		this.rowAddTime = rowAddTime;
-	}
-
-	public String getRowAddUidNo() {
-		return rowAddUidNo;
-	}
-
-	public void setRowAddUidNo(String rowAddUidNo) {
-		this.rowAddUidNo = rowAddUidNo;
-	}
-
-	public String getRowAddProgNo() {
-		return rowAddProgNo;
-	}
-
-	public void setRowAddProgNo(String rowAddProgNo) {
-		this.rowAddProgNo = rowAddProgNo;
-	}
-
-	public Date getRowUpdateTime() {
-		return rowUpdateTime;
-	}
-
-	public void setRowUpdateTime(Date rowUpdateTime) {
-		this.rowUpdateTime = rowUpdateTime;
-	}
-
-	public String getRowUpdateUserIdNo() {
-		return rowUpdateUserIdNo;
-	}
-
-	public void setRowUpdateUserIdNo(String rowUpdateUserIdNo) {
-		this.rowUpdateUserIdNo = rowUpdateUserIdNo;
-	}
-
-	public String getRowUpdateProgrammNo() {
-		return rowUpdateProgrammNo;
-	}
-
-	public void setRowUpdateProgrammNo(String rowUpdateProgrammNo) {
-		this.rowUpdateProgrammNo = rowUpdateProgrammNo;
 	}
 
 	

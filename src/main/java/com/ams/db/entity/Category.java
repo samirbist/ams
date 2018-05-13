@@ -33,18 +33,7 @@ public class Category {
 	@Column(name = "DESCN_TXT")
 	private String descriptionTXT;
 	
-	@Column(name = "Row_Add_Tms")
-	private Date rowAddTms;
-	@Column(name = "Row_Add_Uid_No")
-	private String rowAddUidNo;
-	@Column(name = "Row_Add_Pgm_No")
-	private String rowAddPgmNo;
-	@Column(name = "Row_Updt_Tms")
-	private Date rowUpdtTms;
-	@Column(name = "Row_Updt_Uid_No")
-	private String rowUpdtUidNo;
-	@Column(name = "Row_Updt_Pgm_No")
-	private String rowUpdtPgmNo;
+	
 	
 	@Column(name = "CAGT_SHRT_NM")
 	private String cagtShrtNM;
@@ -110,56 +99,6 @@ public class Category {
 	public void setDescriptionTXT(String descriptionTXT) {
 		this.descriptionTXT = descriptionTXT;
 	}
-
-
-	public Date getRowAddTms() {
-		return rowAddTms;
-	}
-
-	public void setRowAddTms(Date rowAddTms) {
-		this.rowAddTms = rowAddTms;
-	}
-
-	public String getRowAddUidNo() {
-		return rowAddUidNo;
-	}
-
-	public void setRowAddUidNo(String rowAddUidNo) {
-		this.rowAddUidNo = rowAddUidNo;
-	}
-
-	public String getRowAddPgmNo() {
-		return rowAddPgmNo;
-	}
-
-	public void setRowAddPgmNo(String rowAddPgmNo) {
-		this.rowAddPgmNo = rowAddPgmNo;
-	}
-
-	public Date getRowUpdtTms() {
-		return rowUpdtTms;
-	}
-
-	public void setRowUpdtTms(Date rowUpdtTms) {
-		this.rowUpdtTms = rowUpdtTms;
-	}
-
-	public String getRowUpdtUidNo() {
-		return rowUpdtUidNo;
-	}
-
-	public void setRowUpdtUidNo(String rowUpdtUidNo) {
-		this.rowUpdtUidNo = rowUpdtUidNo;
-	}
-
-	public String getRowUpdtPgmNo() {
-		return rowUpdtPgmNo;
-	}
-
-	public void setRowUpdtPgmNo(String rowUpdtPgmNo) {
-		this.rowUpdtPgmNo = rowUpdtPgmNo;
-	}
-
 	
 
 	public String getCagtShrtNM() {
