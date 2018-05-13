@@ -5,12 +5,14 @@ import com.ams.exception.AmsException;
 
 public interface UserService {
 
-	UserDTO getUser(long userId);
+	UserDTO getUser(long userId) throws AmsException;
 
 	long addUser(UserDTO user) throws AmsException;
 
-	void updateUser(long userId, UserDTO user);
+	void updateUser( UserDTO user) throws AmsException;
 
-	void deleteUser(long userId);
+	void deleteUser(String loginName) throws AmsException;
+
+	UserDTO getUser(String loginName) throws AmsException;
 
 }

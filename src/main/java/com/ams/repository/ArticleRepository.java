@@ -1,4 +1,4 @@
-package com.ams.dao;
+package com.ams.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import com.ams.db.entity.Article;
 import com.ams.db.entity.User;
 import com.ams.dto.ArticleDTO;
 
-public interface ArticleServiceDAO  extends JpaRepository<Article, Long>{
+public interface ArticleRepository  extends JpaRepository<Article, Long>{
 
 	
 

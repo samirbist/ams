@@ -1,10 +1,10 @@
-package com.ams.dao;
+package com.ams.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ams.db.entity.Role;
 
-public interface RoleServiceDAO extends JpaRepository<Role, Integer>{
+public interface RoleRepository extends JpaRepository<Role, Integer>{
 
 	Role findByRole(String role);
 

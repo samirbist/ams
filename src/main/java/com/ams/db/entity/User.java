@@ -25,7 +25,7 @@ public class User {
 	@Column(name = "ID")
 	private long gennPID;
 
-	@Column(name = "LOGIN_NM", nullable = false)
+	@Column(name = "LOGIN_NM", nullable = false, unique=true)
 	private String loginName;
 
 	@Column(name = "PASSWORD", nullable = false)
