@@ -1,19 +1,16 @@
 package com.ams.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ams.service.CategoryService;
 import com.ams.dto.CategoryDTO;
+import com.ams.service.CategoryService;
 @RestController
 public class CategoryController {
 
@@ -21,7 +18,7 @@ public class CategoryController {
 	private CategoryService categoryService;
 
 	@GetMapping("/user/{userId}/category/{categoryId}")
-	public CategoryDTO getUser(@PathVariable("userId") long userId,@PathVariable("categoryId") long categoryId) {
+	public CategoryDTO getCategory(@PathVariable("userId") long userId,@PathVariable("categoryId") long categoryId) {
 	CategoryDTO category = categoryService.getCategory(userId, categoryId);
       return category;
 	}

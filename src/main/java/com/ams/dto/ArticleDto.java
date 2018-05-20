@@ -16,6 +16,10 @@ public class ArticleDTO {
 	private UserDTO user;
 
 	private Set<CategoryDTO> articleCategorys = new HashSet<CategoryDTO>();
+	
+	public ArticleDTO() {
+		
+	}
 
 	public long getArtclID() {
 		return artclID;

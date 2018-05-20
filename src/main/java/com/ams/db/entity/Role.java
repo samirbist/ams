@@ -3,15 +3,15 @@ package com.ams.db.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "role")
+@Table(name = "ROLE")
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
+    @Column(name = "ID")
     private int roleId;
 
-    @Column(name = "role")
+    @Column(name = "ROLE_NAME")
     private String role;
 
     public Role() {

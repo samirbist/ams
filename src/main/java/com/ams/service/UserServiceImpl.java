@@ -4,19 +4,23 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ams.db.entity.Role;
 import com.ams.db.entity.User;
 import com.ams.dto.UserDTO;
-import com.ams.exception.AmsException;
 import com.ams.repository.RoleRepository;
 import com.ams.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+	
+	private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
+	
 	@Autowired
 	private UserRepository userDAO;
 
@@ -24,9 +28,10 @@ public class UserServiceImpl implements UserService {
 	private RoleRepository roleDAO;
 
 	@Override
-	public UserDTO getUser(long userId) throws AmsException {
+	public UserDTO getUser(long userId) throws Exception {
+		LOG.debug("getUser() using id  {}", userId);
 		Optional<User> optionalUsers = userDAO.findById(userId);
-		optionalUsers.orElseThrow(() -> new AmsException("User not found"));
+		optionalUsers.orElseThrow(() -> new Exception("User not found"));
 		User user = optionalUsers.get();
 		Set<String> roles = null;
 		for (Role role : user.getRoles()) {
@@ -43,7 +48,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public long addUser(UserDTO userDto) throws AmsException {
+	public long addUser(UserDTO userDto) throws Exception {
 		Set<Role> roleSet = null;
 		if (userDto.getRoles() != null) {
 			roleSet = new HashSet<>();
@@ -52,7 +57,7 @@ public class UserServiceImpl implements UserService {
 				roleSet.add(roleEntity);
 			}
 		} else {
-			throw new AmsException("Role is missing");
+			throw new Exception("Role is missing");
 		}
 
 		User user = new User(userDto.getLoginName(), userDto.getPassword(), userDto.getPin(), userDto.getGivenName(),
@@ -65,10 +70,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateUser(UserDTO userDto) throws AmsException {
+	public long updateUser(UserDTO userDto) throws Exception {
 
 		Optional<User> optionalUsers = userDAO.findById(userDto.getId());
-		optionalUsers.orElseThrow(() -> new AmsException("Username not found"));
+		optionalUsers.orElseThrow(() -> new Exception("Username not found"));
 
 		User userToUpdate = optionalUsers.get();
 
@@ -110,22 +115,26 @@ public class UserServiceImpl implements UserService {
 			}
 			userToUpdate.setRoles(roleSet);
 		}
-		userDAO.save(userToUpdate);
-
+		User updatedUser = userDAO.save(userToUpdate);
+		return updatedUser.getGennPID();
 	}
 
 	@Override
-	public void deleteUser(String loginName) throws AmsException {
+	public long deleteUser(String loginName) throws Exception {
 
-		Optional<User> optionalUsers  = userDAO.findByLoginName(loginName);
-		optionalUsers.orElseThrow(() -> new AmsException("User not found"));
-		userDAO.delete(optionalUsers.get());
-	}
-
-	@Override
-	public UserDTO getUser(String loginName) throws AmsException {
 		Optional<User> optionalUsers = userDAO.findByLoginName(loginName);
-		optionalUsers.orElseThrow(() -> new AmsException("User not found"));
+		optionalUsers.orElseThrow(() -> new Exception("User not found"));
+		User user = optionalUsers.get();
+		long id = user.getGennPID();
+		userDAO.delete(user);
+		return id;
+	}
+
+	@Override
+	public UserDTO getUser(String loginName) throws Exception {
+		LOG.debug("getUser() using login name  {}", loginName);
+		Optional<User> optionalUsers = userDAO.findByLoginName(loginName);
+		optionalUsers.orElseThrow(() -> new Exception("User not found"));
 		User user = optionalUsers.get();
 		Set<String> roles = null;
 		for (Role role : user.getRoles()) {

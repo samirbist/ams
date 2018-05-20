@@ -16,6 +16,9 @@ public class CategoryDTO {
 
 	private Set<ArticleDTO> articleCategorys = new HashSet<ArticleDTO>();
 
+	public CategoryDTO() {
+		
+	}
 
 	
 	public long getCategoryId() {

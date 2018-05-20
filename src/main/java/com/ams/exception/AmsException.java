@@ -7,9 +7,10 @@ public class AmsException  extends Exception{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public AmsException(String message)
-	{
-		super(message);
+	public AmsException(Exception e) {
+		super(e);
 	}
+
+	
 
 }

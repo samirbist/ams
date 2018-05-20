@@ -1,18 +1,17 @@
 package com.ams.service;
 
 import com.ams.dto.UserDTO;
-import com.ams.exception.AmsException;
 
 public interface UserService {
 
-	UserDTO getUser(long userId) throws AmsException;
+	UserDTO getUser(long userId) throws Exception;
 
-	long addUser(UserDTO user) throws AmsException;
+	long addUser(UserDTO user) throws Exception;
 
-	void updateUser( UserDTO user) throws AmsException;
+	long updateUser( UserDTO user) throws Exception;
 
-	void deleteUser(String loginName) throws AmsException;
+	long deleteUser(String loginName) throws Exception;
 
-	UserDTO getUser(String loginName) throws AmsException;
+	UserDTO getUser(String loginName) throws Exception;
 
 }

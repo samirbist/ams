@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -51,8 +52,8 @@ public class User {
 	@OneToMany(mappedBy = "generalPerson")
 	private Collection<Article> article = new ArrayList<Article>();
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName="ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName="ID"))
 	private Set<Role> roles;
 
 	public User() {
@@ -72,6 +73,7 @@ public class User {
 		this.commentTXT = commentTXT;
 		this.roles = roles;
 	}
+
 
 	public Set<Role> getRoles() {
 		return roles;

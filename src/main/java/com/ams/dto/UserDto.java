@@ -17,6 +17,10 @@ public class UserDTO {
 	private Character approvedIND;
 	private Set<String> roles;
 
+	public UserDTO() {
+		
+	}
+	
 	public UserDTO(long id, String pin, String givenName, String familyName, String middleName, String email,
 			String companyName, String commentTXT, String loginName, String password, Character approvedIND,
 			Set<String> roles) {
