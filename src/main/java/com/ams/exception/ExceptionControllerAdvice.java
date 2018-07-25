@@ -1,26 +1,47 @@
 package com.ams.exception;
 
+import java.util.Date;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class ExceptionControllerAdvice {
+@RestController
+public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler{
 
-	/**
-	 * @param ex
-	 * @return
-	 */
-	@ExceptionHandler({AmsException.class})
-	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
-		ErrorResponse error = new ErrorResponse();
-		error.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-		error.setMessage(ex.getMessage());
-		ex.printStackTrace();
-		return new ResponseEntity<ErrorResponse>(error, HttpStatus.OK);
+
+	@ExceptionHandler(Exception.class)
+	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+		ErrorResponse exceptionResponse = new ErrorResponse(new Date(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	
+	
+	@ExceptionHandler(AmsException.class)
+	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex,  WebRequest request) {
+		ErrorResponse exceptionResponse = new ErrorResponse(new Date(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
 
 	}
+	
+	
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		ErrorResponse exceptionResponse = new ErrorResponse(new Date(), "Validation Failed",
+				ex.getBindingResult().toString());
+		return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}	
 
 }
 

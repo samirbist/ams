@@ -4,14 +4,14 @@ import com.ams.dto.UserDTO;
 
 public interface UserService {
 
-	UserDTO getUser(long userId) throws Exception;
+	UserDTO getUser(long userId);
 
-	long addUser(UserDTO user) throws Exception;
+	long addUser(UserDTO user);
 
-	long updateUser( UserDTO user) throws Exception;
+	long updateUser( UserDTO user);
 
-	long deleteUser(String loginName) throws Exception;
+	long deleteUser(String loginName);
 
-	UserDTO getUser(String loginName) throws Exception;
+	UserDTO getUser(String loginName);
 
 }

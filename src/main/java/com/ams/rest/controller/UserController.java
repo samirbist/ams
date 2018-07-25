@@ -24,64 +24,37 @@ public class UserController {
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping("/users/id/{userId}")
-	public ResponseEntity<UserDTO> getUser(@PathVariable("userId") long userId) throws AmsException {
-
-		try {
+	public ResponseEntity<UserDTO> getUser(@PathVariable("userId") long userId)  {
 			UserDTO user = userService.getUser(userId);
 			return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new AmsException(e);
-		}
-
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping("/users/name/{loginName}")
-	public ResponseEntity<UserDTO> getUser(@PathVariable("loginName") String loginName) throws AmsException {
-
-		try {
+	public ResponseEntity<UserDTO> getUser(@PathVariable("loginName") String loginName)  {
 			UserDTO user = userService.getUser(loginName);
 			return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new AmsException(e);
-		}
-
 	}
 
 	@PostMapping("/users")
-	public ResponseEntity<Long> addUser(@RequestBody UserDTO user) throws AmsException {
-		try {
+	public ResponseEntity<Long> addUser(@RequestBody UserDTO user) {
 			long id = userService.addUser(user);
 			return new ResponseEntity<Long>(id, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new AmsException(e);
-		}
 
 	}
 
 	@PutMapping("/users")
-	public ResponseEntity<Long> updateUser(@RequestBody UserDTO user) throws AmsException {
-
-		try {
+	public ResponseEntity<Long> updateUser(@RequestBody UserDTO user) {
 			long id = userService.updateUser(user);
 			return new ResponseEntity<Long>(id, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new AmsException(e);
-		}
-
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@DeleteMapping(value = "/users/{loginName}")
 	public ResponseEntity<Long> deleteUser(@PathVariable("loginName") String loginName) throws AmsException {
 
-		try {
 			long id = userService.deleteUser(loginName);
 			return new ResponseEntity<Long>(id, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new AmsException(e);
-		}
-
 	}
 
 }
